@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using Newtonsoft.Json;
+﻿using System.Net;
 
 namespace BoulderCornBreadForWindows.RetrieveData
 {
