@@ -73,10 +73,10 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish
+#publish
 
 # Publish Web Output
-*.Publish.xml
+# *.Publish.xml
 
 # NuGet Packages Directory
 #packages
