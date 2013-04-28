@@ -16,6 +16,9 @@ namespace BoulderCornBreadForWindows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            var webs = new RetrieveData.GetWebs();
+            webs.ParseJson("");
         }
     }
 }
