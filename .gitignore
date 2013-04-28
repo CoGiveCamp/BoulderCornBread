@@ -85,6 +85,9 @@ DocProject/Help/html
 csx
 *.build.csdef
 
+#ignore tests
+TestResults/
+
 # Windows Store app package directory
 AppPackages/
 
