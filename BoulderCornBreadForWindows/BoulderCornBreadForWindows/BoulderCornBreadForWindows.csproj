@@ -54,13 +54,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Publish\PublishJson.cs" />
     <Compile Include="RetrieveData\GetWebs.cs" />
-=======
     <Compile Include="RetrieveData\GetWebs.cs" />
     <Compile Include="RetrieveData\JsonData.cs" />
->>>>>>> e466205bf434f57ff8e303514b17d7a89b094a42
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
