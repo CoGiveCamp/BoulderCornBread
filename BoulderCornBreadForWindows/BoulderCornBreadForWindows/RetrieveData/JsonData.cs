@@ -12,7 +12,7 @@
         public string FellowImageHeight { get; set; }
         public string FellowImageWidth { get; set; }
         public string RoleDescription { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
         public string GradesServed { get; set; }
         public string NumOfStudents { get; set; }
         public string EligibleLunch { get; set; }
