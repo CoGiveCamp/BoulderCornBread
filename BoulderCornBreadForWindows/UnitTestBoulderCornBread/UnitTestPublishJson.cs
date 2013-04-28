@@ -14,7 +14,7 @@ namespace UnitTestBoulderCornBread
             PublishJson publish = new PublishJson();
             
             object json = new object();
-            Assert.IsTrue(publish.PublishJsontoFtp(json, "test", ""));
+            Assert.IsTrue(publish.PublishJsontoFtp(json, "test.txt", ""));
 
 
 
