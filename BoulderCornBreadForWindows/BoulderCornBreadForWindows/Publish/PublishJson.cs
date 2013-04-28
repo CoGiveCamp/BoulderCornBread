@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BoulderCornBreadForWindows.Publish
 {
-    class PublishJson
+    public class PublishJson
     {
 
         public Boolean PublishJsontoFtp(Object json, string filename, string filepath)
