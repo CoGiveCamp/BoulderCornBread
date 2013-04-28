@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             this.SuspendLayout();
-            // 
-=======
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -45,23 +42,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(658, 238);
             this.dataGridView1.TabIndex = 0;
             // 
->>>>>>> 058cdf551988cfb5ec07dde19a090e80c601c607
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(708, 456);
-            this.Name = "Form1";
-            this.Text = "Form1";
-=======
+
             this.ClientSize = new System.Drawing.Size(682, 262);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
->>>>>>> 058cdf551988cfb5ec07dde19a090e80c601c607
             this.ResumeLayout(false);
 
         }
