@@ -1,29 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net;
 
 namespace BoulderCornBreadForWindows.Publish
 {
-    class PublishJson
+    public class PublishJson
     {
+        private readonly string _filepath = AppDomain.CurrentDomain.BaseDirectory + @"\";
+        
 
-        public Boolean PublishJsontoFtp(Object json, string filename, string filepath)
+        // called by user, passing json to save and ftp to site
+        public Boolean PublishJsontoFtp(Object json, string filename, string ftppath, string username, string password)
         {
-            // fuck this shit
-            string jsonToWrite =  json.ToString();
-            WriteToFile();
-            return false;
+            try
+            {
+
+                string jsonText = json.ToString();
+                WriteToFile(filename, jsonText);
+
+                SendtoFtp(username, password, ftppath, filename);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
-        void WriteToFile()
+        // write the file to application path ready to upload
+        private void WriteToFile(string filename, string jsonText)
         {
 
-            using (StreamWriter writer = new StreamWriter("debug.txt", true))
-            {
-                writer.WriteLine("whatever you text is");
-            }
+            StreamWriter streamWriter = File.CreateText(_filepath + filename);
+
+            streamWriter.Write(jsonText);
+
+            streamWriter.Close();
+        }
+
+        // upload local file to ftp
+        private void SendtoFtp(string username, string password, string ftppath, string filename)
+        {
+
+            /* Create Object Instance */
+            Ftp ftpClient = new Ftp(@"ftp://10.10.10.10/", "user", "password");
+
+            /* Upload a File */
+            ftpClient.Upload("etc/test.txt", @"C:\Users\metastruct\Desktop\test.txt");
+                
 
         }
 

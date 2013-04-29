@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 
 namespace BoulderCornBreadForWindows.RetrieveData
 {
@@ -13,19 +12,16 @@ namespace BoulderCornBreadForWindows.RetrieveData
             return json;
         }
 
+        /*
         // parse out JSON to DataGrid
-        public List<JsonData> ParseJson(string url)
+        public JsonData ParseJson(string url)
         {
 
             url = "http://getsmartschools.org/currentschools.txt";
-            var json = GetJsonFromUrl(url);
-            var dataList = new List<JsonData>
-                {
-                    new JsonData()
-                };
-
-            return dataList;
+            
+            return JsonData;
         }
+         * */
     }
 
 }
