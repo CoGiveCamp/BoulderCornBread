@@ -12,16 +12,17 @@ namespace BoulderCornBreadForWindows.RetrieveData
             return json;
         }
 
-        /*
+       
         // parse out JSON to DataGrid
         public JsonData ParseJson(string url)
         {
 
             url = "http://getsmartschools.org/currentschools.txt";
+            var json = new JsonData();
             
-            return JsonData;
+            return json;
         }
-         * */
+       
     }
 
 }
