@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace BoulderCornBreadForWindows.RetrieveData
 {
@@ -15,27 +18,23 @@ namespace BoulderCornBreadForWindows.RetrieveData
 
        
         // parse out JSON to DataGrid
-        public JsonData ParseJsonToJsonDataObj()
+        public static List<JsonData> ParseJsonToJsonDataObj()
         {
-            var jsonResult = GetJsonFromUrl();
-            var jsonObj = new JsonData();
+            var json = GetJsonFromUrl();
 
-            if (IsJson(jsonResult))
+            if (IsJson(json))
             {
-                foreach (var item in jsonResult)
-                {
-                    
-                }
+
+                return JsonConvert.DeserializeObject<List<JsonData>>(json);
             }
 
-            
-            return jsonObj;
+            throw new Exception("data is empty or does not match object");
         }
 
 
         public static bool IsJson(string input)
         {
-            return input.Trim().StartsWith("{") && input.Trim().EndsWith("}");
+            return input.Trim().StartsWith("[") && input.Trim().EndsWith("]");
         }
        
     }
