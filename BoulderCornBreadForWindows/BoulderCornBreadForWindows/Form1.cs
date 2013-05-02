@@ -21,9 +21,8 @@ namespace BoulderCornBreadForWindows
 
         private void BindGrid()
         {
-            GetWebs gb = new GetWebs();
 
-            this.gvJson.DataSource = gb.ParseJson("http://getsmartschools.org/currentschools.txt");
+            this.gvJson.DataSource = GetWebs.ParseJsonToJsonDataObj();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace BoulderCornBreadForWindows.RetrieveData
 {
-    class JsonData
+    public class JsonData
     {
 
         public double Latitude { get; set; }
