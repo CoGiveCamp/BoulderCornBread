@@ -2,25 +2,40 @@
 
 namespace BoulderCornBreadForWindows.RetrieveData
 {
-    internal class GetWebs
+    public class GetWebs
     {
+        public static string UrlPath = "http://getsmartschools.org/currentschools.txt";
 
         // retrieve JSON from some url
-        private string GetJsonFromUrl(string urlPath)
+        public static string GetJsonFromUrl()
         {
-            var json = new WebClient().DownloadString(urlPath);
+            var json = new WebClient().DownloadString(UrlPath);
             return json;
         }
 
        
         // parse out JSON to DataGrid
-        public JsonData ParseJson(string url)
+        public JsonData ParseJsonToJsonDataObj()
         {
+            var jsonResult = GetJsonFromUrl();
+            var jsonObj = new JsonData();
 
-            url = "http://getsmartschools.org/currentschools.txt";
-            var json = new JsonData();
+            if (IsJson(jsonResult))
+            {
+                foreach (var item in jsonResult)
+                {
+                    
+                }
+            }
+
             
-            return json;
+            return jsonObj;
+        }
+
+
+        public static bool IsJson(string input)
+        {
+            return input.Trim().StartsWith("{") && input.Trim().EndsWith("}");
         }
        
     }

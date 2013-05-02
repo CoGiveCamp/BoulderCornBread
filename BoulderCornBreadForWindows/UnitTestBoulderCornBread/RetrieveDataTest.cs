@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using BoulderCornBreadForWindows.RetrieveData;
 
 namespace UnitTestBoulderCornBread
 {
     [TestClass]
     public class RetrieveDataTest
     {
+        const string UrlPath = "http://echo.jsontest.com/key/value/one/two";
+
         [TestMethod]
         public void Data_From_Remote_Is_JSON()
         {
-            var urlPath = "http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo";
-            var json = new WebClient().DownloadString(urlPath);
-            Assert.IsFalse(IsJson(json));
+            var json = GetWebs.GetJsonFromUrl(UrlPath);
+            Assert.IsTrue(GetWebs.IsJson(json));
 
         }
 
-        private bool IsJson(string input)
-        {
-            return input.StartsWith("{");
-        }
     }
 }
