@@ -1,27 +1,42 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace BoulderCornBreadForWindows.RetrieveData
 {
-    internal class GetWebs
+    public class GetWebs
     {
+        public static string UrlPath = "http://getsmartschools.org/currentschools.txt";
 
         // retrieve JSON from some url
-        private string GetJsonFromUrl(string urlPath)
+        public static string GetJsonFromUrl()
         {
-            var json = new WebClient().DownloadString(urlPath);
+            var json = new WebClient().DownloadString(UrlPath);
             return json;
         }
 
-        /*
+       
         // parse out JSON to DataGrid
-        public JsonData ParseJson(string url)
+        public static List<JsonData> ParseJsonToJsonDataObj()
         {
+            var json = GetJsonFromUrl();
 
-            url = "http://getsmartschools.org/currentschools.txt";
-            
-            return JsonData;
+            if (IsJson(json))
+            {
+
+                return JsonConvert.DeserializeObject<List<JsonData>>(json);
+            }
+
+            throw new Exception("data is empty or does not match object");
         }
-         * */
+
+
+        public static bool IsJson(string input)
+        {
+            return input.Trim().StartsWith("[") && input.Trim().EndsWith("]");
+        }
+       
     }
 
 }
