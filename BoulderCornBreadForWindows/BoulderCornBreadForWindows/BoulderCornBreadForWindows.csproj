@@ -60,7 +60,6 @@
     <Compile Include="Publish\Ftp.cs" />
     <Compile Include="Publish\PublishJson.cs" />
     <Compile Include="RetrieveData\GetWebs.cs" />
-    <Compile Include="RetrieveData\JsonData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

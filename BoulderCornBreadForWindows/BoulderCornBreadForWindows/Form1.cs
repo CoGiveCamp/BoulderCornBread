@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
 using BoulderCornBreadForWindows.RetrieveData;
+using Newtonsoft.Json;
 
 namespace BoulderCornBreadForWindows
 {
@@ -22,17 +19,49 @@ namespace BoulderCornBreadForWindows
         private void BindGrid()
         {
 
-            this.gvJson.DataSource = GetWebs.ParseJsonToJsonDataObj();
+            gvJson.DataSource = GetWebs.ParseJsonToJsonDataObj();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-           
+            // need to add ability for new row to be added and edited.
         }
+
+        private static List<dynamic> ConvertGridViewToCollection(DataGridView dg)
+        {
+            var data = (List<dynamic>)dg.DataSource;
+            return data;
+        }
+
+        private static void SaveFile(List<dynamic> data )
+        {
+            var dialog = new SaveFileDialog
+                {
+                    Filter = @"txt files (*.txt)|*.txt|JSON (*.json)|*.json",
+                    FilterIndex = 2,
+                    RestoreDirectory = true
+                };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var stream = new StreamWriter(dialog.OpenFile());
+               
+                    var serializer = new JsonSerializer();
+                    using (JsonWriter writer = new JsonTextWriter(stream))
+                    {
+
+                        serializer.Serialize(writer, data);
+
+                    }
+            }
+        }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You clicked the Save button. You get a swift kick to the groin.");
+            var data = ConvertGridViewToCollection(gvJson);
+            SaveFile(data);
+
         }
 
     }   //end class Form1
