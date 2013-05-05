@@ -24,10 +24,10 @@ namespace BoulderCornBreadForWindows
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-
+            // need to add ability for new row to be added and edited.
         }
 
-        private List<dynamic> ConvertGridViewToCollection(DataGridView dg)
+        private static List<dynamic> ConvertGridViewToCollection(DataGridView dg)
         {
             var data = (List<dynamic>)dg.DataSource;
             return data;
@@ -61,19 +61,6 @@ namespace BoulderCornBreadForWindows
         {
             var data = ConvertGridViewToCollection(gvJson);
             SaveFile(data);
-
-            //var serializer = new JsonSerializer();
-            //serializer.Converters.Add(new JavaScriptDateTimeConverter());
-
-            /*using (var sw = new StreamWriter(@"data.json"))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                
-                serializer.Serialize(writer, data);
-
-            }
-             */
-
 
         }
 
