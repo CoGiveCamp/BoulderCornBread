@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BoulderCornBreadForWindows.RetrieveData;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace BoulderCornBreadForWindows
 {
@@ -25,7 +19,7 @@ namespace BoulderCornBreadForWindows
         private void BindGrid()
         {
 
-            this.gvJson.DataSource = GetWebs.ParseJsonToJsonDataObj();
+            gvJson.DataSource = GetWebs.ParseJsonToJsonDataObj();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -39,18 +33,47 @@ namespace BoulderCornBreadForWindows
             return data;
         }
 
+        private static void SaveFile(List<dynamic> data )
+        {
+            var dialog = new SaveFileDialog
+                {
+                    Filter = @"txt files (*.txt)|*.txt|JSON (*.json)|*.json",
+                    FilterIndex = 2,
+                    RestoreDirectory = true
+                };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var stream = new StreamWriter(dialog.OpenFile());
+               
+                    var serializer = new JsonSerializer();
+                    using (JsonWriter writer = new JsonTextWriter(stream))
+                    {
+
+                        serializer.Serialize(writer, data);
+
+                    }
+            }
+        }
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var serializer = new JsonSerializer();
-            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            var data = ConvertGridViewToCollection(gvJson);
+            SaveFile(data);
 
-            using (var sw = new StreamWriter(@"data.json"))
+            //var serializer = new JsonSerializer();
+            //serializer.Converters.Add(new JavaScriptDateTimeConverter());
+
+            /*using (var sw = new StreamWriter(@"data.json"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                var data = ConvertGridViewToCollection(gvJson);
+                
                 serializer.Serialize(writer, data);
 
             }
+             */
+
 
         }
 
