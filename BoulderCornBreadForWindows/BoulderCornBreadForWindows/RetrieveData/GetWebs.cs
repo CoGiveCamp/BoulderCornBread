@@ -18,14 +18,14 @@ namespace BoulderCornBreadForWindows.RetrieveData
 
        
         // parse out JSON to DataGrid
-        public static List<JsonData> ParseJsonToJsonDataObj()
+        public static List<dynamic> ParseJsonToJsonDataObj()
         {
             var json = GetJsonFromUrl();
 
             if (IsJson(json))
             {
 
-                return JsonConvert.DeserializeObject<List<JsonData>>(json);
+                return JsonConvert.DeserializeObject<List<dynamic>>(json);
             }
 
             throw new Exception("data is empty or does not match object");
